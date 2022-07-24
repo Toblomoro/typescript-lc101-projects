@@ -1,12 +1,9 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const SpaceLocation_1 = require("./SpaceLocation");
 // URL for the instructions: 
 // https://education.launchcode.org/intro-to-professional-web-dev/chapters/typescript/exercises.html 
 // Part 1: Declare (5) Variables With Type
-/*let spacecraftName: string = 'Determination';
-let speedMph:	number =	17500;
-let kilometersToMars:	number=	225000000;
-let kilometersToTheMoon:	number= 384400;
-let milesPerKilometer:	number=	0.621;*/
 let kilometersToMars = 225000000;
 let kilometersToTheMoon = 384400;
 // Part 2: Print Days to Mars
@@ -32,14 +29,17 @@ class Spacecraft {
         let daysToLocation = (hoursToLocation / 24);
         return daysToLocation;
     }
+    printDaysToLocation(location) {
+        console.log(`${this.name} would take ${this.getDaysToLocation(location.kilometersAway)} days to get to ${location.name}.`);
+    }
 }
 // Create an instance of the class here:
 let spaceShuttle = new Spacecraft('Determination', 17500);
 // Move your output statements from part 3 here. Update the template literals use the
 // instance of the class.
-console.log(`It will take ${spaceShuttle.name} ${spaceShuttle.getDaysToLocation(kilometersToMars)} days to reach Mars.`);
-console.log(`It will take ${spaceShuttle.name} ${spaceShuttle.getDaysToLocation(kilometersToTheMoon)} days to reach the Moon.`);
 //console.log(`It will take ${spacecraftName} ${getDaysToLocation(kilometersToTheMoon)} to reach the Moon`)
+spaceShuttle.printDaysToLocation(new SpaceLocation_1.SpaceLocation('Mars', kilometersToMars));
+spaceShuttle.printDaysToLocation(new SpaceLocation_1.SpaceLocation('the Moon', kilometersToTheMoon));
 // Part 5: Export and Import the SpaceLocation Class
 // Add the required import statement BEFORE the part 1 concent.
 // Add the printDaysToLocation function to the Spacecraft class.
