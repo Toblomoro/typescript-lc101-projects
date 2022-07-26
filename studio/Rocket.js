@@ -3,16 +3,51 @@ exports.__esModule = true;
 exports.Rocket = void 0;
 var Rocket = /** @class */ (function () {
     function Rocket(name, totalCapacityKg) {
+        this.cargoItems = [];
+        this.astronauts = [];
         this.name = name;
         this.totalCapacityKg = totalCapacityKg;
     }
+    /* sumMass( items: Payload[] ): number {
+         let weight:number = 0;
+         items.forEach(element => {
+             weight+=element.massKg
+             
+         });
+         return weight
+     };*/
     Rocket.prototype.sumMass = function (items) {
-        for (var i = 0; i < this.cargoItems.length; i++) {
-            var weight = 0;
-            var itemsSum = (weight += i);
-            return itemsSum;
+        var total = 0;
+        items.forEach(function (item) {
+            total += item.massKg;
+        });
+        return total;
+    };
+    Rocket.prototype.currentMassKg = function () {
+        var mass = this.sumMass(this.cargoItems) + this.sumMass(this.astronauts);
+        return mass;
+    };
+    ;
+    Rocket.prototype.canAdd = function (item) {
+        if (this.currentMassKg() + item.massKg <= this.totalCapacityKg) {
+            return true;
         }
-        return;
+        else
+            return false;
+    };
+    Rocket.prototype.addCargo = function (cargo) {
+        if (this.canAdd(cargo) == true) {
+            return true;
+        }
+        else
+            return false;
+    };
+    Rocket.prototype.addAstronaut = function (astronaut) {
+        if (this.canAdd(astronaut) == true) {
+            return true;
+        }
+        else
+            return false;
     };
     return Rocket;
 }());
