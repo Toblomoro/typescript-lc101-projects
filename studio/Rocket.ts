@@ -39,13 +39,14 @@ export class Rocket {
 
     }
     addCargo(cargo: Cargo): boolean {
-        if (this.canAdd(cargo)==true) {
+        if (this.canAdd(cargo)===true) {
+            this.cargoItems.push(cargo)
          return true  
             
         } else return false
     }
     addAstronaut(astronaut: Astronaut): boolean{
-        if (this.canAdd(astronaut)==true) {
+        if (this.canAdd(astronaut)===true) {
            return true
             
         } else return false
